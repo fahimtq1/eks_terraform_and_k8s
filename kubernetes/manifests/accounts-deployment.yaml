@@ -1,0 +1,31 @@
+# kubernetes/manifests/accounts-deployment.yaml
+apiVersion: apps/v1
+kind: Deployment
+metadata:
+  name: accounts-deployment
+  labels:
+    app: accounts
+spec:
+  replicas: 2 # Run 2 instances of our application for availability
+  selector:
+    matchLabels:
+      app: accounts
+  template:
+    metadata:
+      labels:
+        app: accounts
+        team: backend # This label is for our Conftest policy
+    spec:
+      containers:
+      - name: accounts-service
+        # IMPORTANT: Replace this with your actual ECR repository URI
+        image: "335939801540.dkr.ecr.us-east-1.amazonaws.com/accounts-service:latest"
+        ports:
+        - containerPort: 8080 # The port our Go application listens on
+        resources:
+          requests:
+            cpu: "100m" # Request 0.1 CPU core
+            memory: "64Mi" # Request 64 MB of memory
+          limits:
+            cpu: "200m"
+            memory: "128Mi"

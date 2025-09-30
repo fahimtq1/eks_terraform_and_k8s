@@ -1,0 +1,15 @@
+# kubernetes/manifests/accounts-service.yaml
+apiVersion: v1
+kind: Service
+metadata:
+  name: accounts-service
+spec:
+  # This makes the service accessible from within the cluster.
+  type: ClusterIP 
+  selector:
+    # This service will route traffic to any Pod with the label 'app: accounts'
+    app: accounts 
+  ports:
+    - protocol: TCP
+      port: 80 # The port the service will be available on
+      targetPort: 8080 # The port on the pod to forward traffic to
