@@ -1,4 +1,4 @@
-# Pismo-Style FinTech Platform Simulator on AWS (EKS + Terraform + K8s)
+Platform Simulator on AWS (EKS + Terraform + K8s)
 
 This repository is a **minimal, portfolio-friendly simulation** of a Pismo-like core banking platform. It provisions **AWS networking + EKS** with **Terraform**, deploys a simple **Go (Golang) “accounts” microservice** to Kubernetes, and includes plain **Kubernetes manifests** plus an **advanced Argo Rollouts (Istio) canary** example.
 
